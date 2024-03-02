@@ -3,7 +3,6 @@ import { Program } from "@coral-xyz/anchor";
 import { Escrow } from "../target/types/escrow";
 import { PublicKey } from "@solana/web3.js";
 import {
-  ASSOCIATED_TOKEN_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
   createMint,
   getAssociatedTokenAddressSync,

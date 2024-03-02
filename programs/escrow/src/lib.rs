@@ -103,7 +103,6 @@ pub mod escrow {
             &[ctx.bumps.escrow],
         ]];
 
-        msg!("TEST 1");
         // BUYER TRANSFER ASKING_AMOUNT ASKING_MINT TO INITIALIZER
         let taker_transfer_accounts = TransferChecked {
             from: ctx.accounts.taker_asking_ata.to_account_info(),
@@ -111,16 +110,14 @@ pub mod escrow {
             to: ctx.accounts.initializer_asking_ata.to_account_info(),
             authority: ctx.accounts.taker.to_account_info(),
         };
-        msg!("TEST 1.1");
         let taker_transfer_ctx =
             CpiContext::new(token_program.to_account_info(), taker_transfer_accounts);
-        msg!("TEST 1.2");
+
         transfer_checked(
             taker_transfer_ctx,
             escrow.asking_amount,
             asking_mint.decimals,
         )?;
-        msg!("TEST 2");
 
         // TRANSFER OFFER_AMOUNT OFFER_MINT TO BUYER
         let vault_transfer_accounts = TransferChecked {
@@ -140,7 +137,6 @@ pub mod escrow {
             offering_mint.decimals,
         )?;
 
-        msg!("TEST 3");
         // CLOSE VAULT AND TRANSFER RENT TO INITIALIZER
         let close_cpi_accounts = CloseAccount {
             account: vault.to_account_info(),
